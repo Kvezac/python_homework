@@ -194,7 +194,11 @@ class Stadium:
 
     @capacity.setter
     def capacity(self, value):
-        self.__capacity = value
+        try:
+            if int(value):
+                self.__capacity = value
+        except ValueError:
+            raise f"Должно быть число."
 
     def get_info(self):
         return f"Данные стадиона:\n" \
@@ -206,19 +210,19 @@ class Stadium:
 
 
 if __name__ == '__main__':
-    print("Задание 1")
-    my_car = Car()
-    print(my_car.get_info())
-    print(my_car.color_car)
-    my_car.color_car = 'yellow'
-    print(my_car.color_car)
-    znak_out()
-    print("Задание 2")
-    my_book = Book()
-    print(my_book.get_info())
-    print(my_book.publisher)
-    my_book.publisher = 'АСТ'
-    print(my_book.publisher)
+    # print("Задание 1")
+    # my_car = Car()
+    # print(my_car.get_info())
+    # print(my_car.color_car)
+    # my_car.color_car = 'yellow'
+    # print(my_car.color_car)
+    # znak_out()
+    # print("Задание 2")
+    # my_book = Book()
+    # print(my_book.get_info())
+    # print(my_book.publisher)
+    # my_book.publisher = 'АСТ'
+    # print(my_book.publisher)
     znak_out()
     print("Задание 3")
     my_stadium = Stadium()
