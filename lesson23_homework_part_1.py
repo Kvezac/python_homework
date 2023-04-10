@@ -89,7 +89,7 @@ class Book:
 
     def __init__(self):
         self.__name_book = input("Введите название книги: ")
-        self.__year_of_publishing = input("Введите год выпуска: ")
+        self.year_of_publishing = input("Введите год выпуска: ")
         self.__publisher = input("Введите издателя: ")
         self.__genre = input("Введите жанр: ")
         self.__author = input("Введите автора: ")
@@ -150,11 +150,11 @@ class Stadium:
     """
 
     def __init__(self):
-        self.__name_stadium = input("Введите название стадиона: ")
-        self.__opening_date = input("Введите дату открытия: ")
-        self.__country = input("Введите страну: ")
-        self.__city = input("Введите город: ")
-        self.__capacity = input("Введите вместимость: ")
+        self.name_stadium = input("Введите название стадиона: ")
+        self.opening_date = input("Введите дату открытия: ")
+        self.country = input("Введите страну: ")
+        self.city = input("Введите город: ")
+        self.capacity = input("Введите вместимость: ")
 
     @property
     def name_stadium(self):
