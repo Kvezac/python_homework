@@ -21,9 +21,9 @@ class Car:
         self.__model_name = input("Введите название модели: ")
         self.__year_of_issue = input("Введите год выпуска: ")
         self.__manufacturer = input("Введите завод изготовитель: ")
-        self.__engin_capacity = input("Введите объем двигателя: ")
-        self.__color_car = input("Введите цвет машины: ")
-        self.__price_car = input("Введите цену машины: ")
+        self.engin_capacity = input("Введите объем двигателя: ")
+        self.color_car = input("Введите цвет машины: ")
+        self.price_car = input("Введите цену машины: ")
 
     @property
     def model_name(self):
@@ -68,10 +68,10 @@ class Car:
                f"\t{self.manufacturer}\n" \
                f"\t{self.engin_capacity}\n" \
                f"\t{self.color_car}\n" \
-               f"\t{self.price_car}" \
+               f"\t{self.price_car}"
+
 
 class Book:
-
     """ Реализуйте класс «Книга».
         Необходимо хранить в полях класса:
             - название книги
