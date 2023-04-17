@@ -85,7 +85,7 @@ class Complex:
         return f'{self.__class__}: a={self.a}, b={self.b}'
 
     def __str__(self):
-        return f'{self.a}{self.b:+}j'
+        return f'({self.a}{self.b:+}i)'
 
     def __add__(self, other):
         new_a = self.a + other.a
