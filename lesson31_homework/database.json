@@ -1,0 +1,344 @@
+[
+    {
+        "gender": "male",
+        "type": "sneakers",
+        "manufacturer": "Nike",
+        "size": [
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46"
+        ],
+        "color": "black",
+        "price": "$100"
+    },
+    {
+        "gender": "male",
+        "type": "boots",
+        "manufacturer": "Timberland",
+        "size": [
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46"
+        ],
+        "color": "brown",
+        "price": "$150"
+    },
+    {
+        "gender": "male",
+        "type": "sandals",
+        "manufacturer": "Adidas",
+        "size": [
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46"
+        ],
+        "color": "blue",
+        "price": "$50"
+    },
+    {
+        "gender": "male",
+        "type": "dress shoes",
+        "manufacturer": "Cole Haan",
+        "size": [
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46"
+        ],
+        "color": "brown",
+        "price": "$200"
+    },
+    {
+        "gender": "male",
+        "type": "running shoes",
+        "manufacturer": "New Balance",
+        "size": [
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46"
+        ],
+        "color": "gray",
+        "price": "$80"
+    },
+    {
+        "gender": "male",
+        "type": "loafers",
+        "manufacturer": "Gucci",
+        "size": [
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46"
+        ],
+        "color": "black",
+        "price": "$500"
+    },
+    {
+        "gender": "male",
+        "type": "work boots",
+        "manufacturer": "Red Wing",
+        "size": [
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46"
+        ],
+        "color": "tan",
+        "price": "$250"
+    },
+    {
+        "gender": "male",
+        "type": "flip flops",
+        "manufacturer": "Havaianas",
+        "size": [
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46"
+        ],
+        "color": "green",
+        "price": "$20"
+    },
+    {
+        "gender": "male",
+        "type": "boat shoes",
+        "manufacturer": "Sperry",
+        "size": [
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46"
+        ],
+        "color": "navy",
+        "price": "$100"
+    },
+    {
+        "gender": "male",
+        "type": "hiking boots",
+        "manufacturer": "Merrell",
+        "size": [
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46"
+        ],
+        "color": "gray",
+        "price": "$120"
+    },
+    {
+        "gender": "female",
+        "type": "shoes",
+        "manufacturer": "Steve Madden",
+        "size": [
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41"
+        ],
+        "color": "red",
+        "price": "$80"
+    },
+    {
+        "gender": "female",
+        "type": "boots",
+        "manufacturer": "UGG",
+        "size": [
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41"
+        ],
+        "color": "black",
+        "price": "$200"
+    },
+    {
+        "gender": "female",
+        "type": "sandals",
+        "manufacturer": "Birkenstock",
+        "size": [
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41"
+        ],
+        "color": "brown",
+        "price": "$90"
+    },
+    {
+        "gender": "female",
+        "type": "flats",
+        "manufacturer": "Tory Burch",
+        "size": [
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41"
+        ],
+        "color": "black",
+        "price": "$250"
+    },
+    {
+        "gender": "female",
+        "type": "heels",
+        "manufacturer": "Jimmy Choo",
+        "size": [
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41"
+        ],
+        "color": "silver",
+        "price": "$500"
+    },
+    {
+        "gender": "female",
+        "type": "sneakers",
+        "manufacturer": "Adidas",
+        "size": [
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41"
+        ],
+        "color": "white",
+        "price": "$100"
+    },
+    {
+        "gender": "female",
+        "type": "wedges",
+        "manufacturer": "Michael Kors",
+        "size": [
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41"
+        ],
+        "color": "beige",
+        "price": "$150"
+    },
+    {
+        "gender": "female",
+        "type": "booties",
+        "manufacturer": "Sam Edelman",
+        "size": [
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41"
+        ],
+        "color": "tan",
+        "price": "$120"
+    },
+    {
+        "gender": "female",
+        "type": "espadrilles",
+        "manufacturer": "Soludos",
+        "size": [
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41"
+        ],
+        "color": "navy",
+        "price": "$80"
+    },
+    {
+        "gender": "female",
+        "type": "mules",
+        "manufacturer": "Gucci",
+        "size": [
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41"
+        ],
+        "color": "pink",
+        "price": "$600"
+    },
+    {
+        "gender": "unisex",
+        "type": "running shoes",
+        "manufacturer": "Nike",
+        "size": [
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47"
+        ],
+        "color": "black/white",
+        "price": "$500"
+    }
+]
