@@ -14,7 +14,7 @@ def main():
         контроллера и представления.
     """
     app = Controller()
-    app.run
+    app.run()
 
 
 if __name__ == '__main__':

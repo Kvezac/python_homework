@@ -14,5 +14,12 @@ class Controller:
 
     def user_response_answer(self, query):
         if query == '1':
-            target = self.view.get_target()
+            target = self.view.get_recepi_data()
             self.model.add_recipe(target)
+
+        elif query == '2':
+            pass
+
+        elif query == '3':
+            pass
+

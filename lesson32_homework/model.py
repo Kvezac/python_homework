@@ -21,7 +21,7 @@ class Model:
         self.filename = filename
         self.database = []
         try:
-            with open('save_test.csv', newline='') as csvfile:
+            with open(self.filename, newline='') as csvfile:
                 data = DictReader(csvfile)
                 for row in data:
                     self.database.append(
@@ -35,18 +35,22 @@ class Model:
     def __to_dict__(self):
         pass
 
-
     def __save_data__(self):
         with open('save_test.csv', 'w', encoding='utf-8', newline='') as csv_save:
             fields_name = ['name_recipe', 'author', 'type', 'description', 'video_link', 'ingredients', 'kitchen']
-            data_writer = DictWriter(csv_save, fieldnames=fields_name, quotechar='"', delimiter=',', skipinitialspace=True)
+            data_writer = DictWriter(csv_save, fieldnames=fields_name, quotechar='"', delimiter=',',
+                                     skipinitialspace=True)
             data_writer.writeheader()
             for rec in self.database:
                 data_writer.writerow(rec.__dict__)
 
+    def add_recipe(self, recipe_data):
+        self.database.append(Recipe(*recipe_data))
+        self.__save_data__()
+
 
 if __name__ == '__main__':
-    m = Model('test_database.csv')
-    # m.database
+    m = Model('database.csv')
+    m.database
     [print(i, sep=', ') for i in m.database]
     m.__save_data__()
