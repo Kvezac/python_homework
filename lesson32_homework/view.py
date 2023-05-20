@@ -14,8 +14,13 @@ class View:
         return row_data
 
     def get_target(self):
-        words = input('Input keywords to find films, comma separated: ')
+        words = input('Input keywords to find recipes, comma separated: ')
         return words
+
+    def delition_context(self, recipes):
+        self.print_recipe(recipes)
+        number = int(input('Select the recipe number to delete: '))
+        return number
 
     def print_recipe(self, recipes):
         [print(f'{ind}. {recipe}') for ind, recipe in enumerate(recipes, 1)]

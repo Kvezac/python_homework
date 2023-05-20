@@ -1,10 +1,11 @@
 from model import Model
 from view import View
 
+
 class Controller:
     def __init__(self):
         self.view = View()
-        self.model = Model('test_database.csv')
+        self.model = Model('database.csv')
 
     def run(self):
         query = None
@@ -18,8 +19,14 @@ class Controller:
             self.model.add_recipe(target)
 
         elif query == '2':
-            pass
+            target = self.view.get_target()
+            recipes = self.model.get_recipes(target)
+            self.view.print_recipe(recipes)
 
         elif query == '3':
-            pass
-
+            target = self.view.get_target()
+            recipes = self.model.get_recipes(target)
+            if len(recipes) > 1:
+                number = self.view.delition_context(recipes)
+                recipes = [recipes[number - 1]]
+            self.model.remove_recipe(recipes[0])

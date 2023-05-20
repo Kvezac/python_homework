@@ -48,6 +48,21 @@ class Model:
         self.database.append(Recipe(*recipe_data))
         self.__save_data__()
 
+    def get_recipes(self,words):
+        words = list(map(str.strip, words.split(',')))
+        recipes = []
+        for word in words:
+            print('1', word)
+            for recipe in self.database:
+                print(recipe)
+                if word in ' '.join(map(str, recipe.__dict__.values())) and recipe not in recipes:
+                    recipes.append(recipe)
+            return recipes
+
+    def remove_recipe(self, recipe):
+        self.database.remove(recipe)
+        self.__save_data__()
+
 
 if __name__ == '__main__':
     m = Model('database.csv')
