@@ -3,7 +3,7 @@ from csv import DictReader, DictWriter
 
 class Recipe:
     def __init__(self, name_recipe: str, author: str, type: str, description: str, video_link: str,
-                 ingredients: [str], kitchen: str):
+                 ingredients: str, kitchen: str):
         self.name_recipe = name_recipe
         self.author = author
         self.type = type
@@ -36,7 +36,7 @@ class Model:
         pass
 
     def __save_data__(self):
-        with open('save_test.csv', 'w', encoding='utf-8', newline='') as csv_save:
+        with open(self.filename, 'w', encoding='utf-8', newline='') as csv_save:
             fields_name = ['name_recipe', 'author', 'type', 'description', 'video_link', 'ingredients', 'kitchen']
             data_writer = DictWriter(csv_save, fieldnames=fields_name, quotechar='"', delimiter=',',
                                      skipinitialspace=True)
