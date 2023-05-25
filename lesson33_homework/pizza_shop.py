@@ -252,16 +252,14 @@ class Pizzeria:
                 size = input('Введите размер пиццы(25 / 30)\n: ')
                 if size == '30':
                     order.base = PizzaBase30cm()
-                self.add_topping(order)
-                self.make_an_order(order)
             elif query == '2':
                 base = [PizzaBase25cm(), PizzaBase25cm()]
                 for ind, dough in enumerate(base, 1):
                     print(f'{ind}. {dough}')
                 date = input('Выберите основу для вашей пиццы\n: ')
                 order = type('user', (PizzaBase,), {'name': 'user', 'toppings': [], 'base': base[int(date) - 1]})
-                self.add_topping(order)
-                self.make_an_order(order)
+            self.add_topping(order)
+            self.make_an_order(order)
 
 
 if __name__ == '__main__':
