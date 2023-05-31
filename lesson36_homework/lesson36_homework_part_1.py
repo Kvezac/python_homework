@@ -135,11 +135,11 @@ def decrypt_file(filename, key):
 total_size = 0
 
 
-def analysis_file_sizes(path, level=1):
+def analysis_file_sizes(path):
     global total_size
     for i in os.listdir(path):
         if os.path.isdir(fr"{path}\{i}"):
-            analysis_file_sizes(fr"{path}\{i}", total_size)
+            analysis_file_sizes(fr"{path}\{i}")
         elif os.path.isfile(fr"{path}\{i}"):
             total_size += os.path.getsize(fr"{path}\{i}")
     if total_size < 1024:
@@ -190,7 +190,7 @@ def main():
                             print("There is not command like this.")
             case "3":
                 dir_path_input = input("Введите путь к каталогу\n: ")
-                analysis_file_sizes(dir_path_input)
+                print(analysis_file_sizes(dir_path_input))
             case _:
                 print("There is no command like this.")
     else:
