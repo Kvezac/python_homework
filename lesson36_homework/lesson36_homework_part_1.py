@@ -100,9 +100,9 @@ def load_key():
 def remove_file_key(file_name):
     try:
         os.remove(file_name)
-        return file_name, "Файл удален"
+        return file_name, "File deleted"
     except FileNotFoundError:
-        return file_name, "Файла не существует"
+        return file_name, "File does not exist"
 
 
 @encryption_logging
@@ -174,22 +174,22 @@ def main():
                             write_key()
                         case "2":
                             key = load_key()[1]
-                            file_name = input("Введите имя файла для шифрования\n: ")
+                            file_name = input("Enter a filename to encrypt\n: ")
                             encrypt_file(file_name, key)
                         case "3":
                             key = load_key()[1]
-                            file_name = input("Введите имя файла для расшифрования\n: ")
+                            file_name = input("Enter filename to decrypt\n: ")
                             decrypt_file(file_name, key)
                         case"4":
-                            if input("Предупреждение при удалении каталога, секретный ключ будет удален навсегда\n"
-                                     "1. Подтвердить\n: ") == "1":
+                            if input("Warning when deleting directory, private key will be permanently deleted\n"
+                                     "1. Confirm\n: ") == "1":
                                 remove_file_key("crypto.key")
                             else:
-                                print("Секретный ключ не был удален!")
+                                print("The secret key has not been deleted!")
                         case _:
                             print("There is not command like this.")
             case "3":
-                dir_path_input = input("Введите путь к каталогу\n: ")
+                dir_path_input = input("Enter directory path\n: ")
                 print(analysis_file_sizes(dir_path_input))
             case _:
                 print("There is no command like this.")
