@@ -26,7 +26,7 @@ def in_file_out_file(in_file=None, out_file=None):
     return decorator
 
 
-file_read = 'test.txt'
+file_read = 'homework.txt'
 file_write = 'test_out.txt'
 
 
