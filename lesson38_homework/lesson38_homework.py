@@ -1,7 +1,55 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
 
 # 1
+
+class SocialMediaAccount(ABC):
+    def __init__(self, username):
+        self.username = username
+
+    @abstractmethod
+    def post(self, content):
+        pass
+
+
+class FacebookAccount(SocialMediaAccount):
+    def post(self, content):
+        print(f"Posting on Facebook as {self.username}: {content}")
+
+
+class InstagramAccount(SocialMediaAccount):
+    def post(self, content):
+        print(f"Posting on Instagram as {self.username}: {content}")
+
+
+class TwitterAccount(SocialMediaAccount):
+    def post(self, content):
+        print(f"Posting on Twitter as {self.username}: {content}")
+
+
+class SocialMediaAccountFactory:
+
+    def create_account(self, platform, username):
+        if platform == "Facebook":
+            return FacebookAccount(username)
+        elif platform == "Instagram":
+            return InstagramAccount(username)
+        elif platform == "Twitter":
+            return TwitterAccount(username)
+
+
+class ProxySocialMediaAccount(SocialMediaAccount):
+    def __init__(self, account):
+        self.account = account
+
+    def post(self, content):
+        if self.is_content_safe(content):
+            self.account.post(content)
+        else:
+            print("Content is not safe for posting.")
+
+    def is_content_safe(self, content):
+        return True if content else False
 
 
 # 2
@@ -145,7 +193,26 @@ class DVD(Device):
 
 
 if __name__ == '__main__':
+    # 1
+    print(1)
+    factory = SocialMediaAccountFactory()
+    facebook_account = factory.create_account("Facebook", "Top_academy")
+    instagram_account = factory.create_account("Instagram", "Not_academy")
+    twitter_account = factory.create_account("Twitter", "mr_Grey")
+
+    proxy_facebook_account = ProxySocialMediaAccount(facebook_account)
+    proxy_instagram_account = ProxySocialMediaAccount(instagram_account)
+    proxy_twitter_account = ProxySocialMediaAccount(twitter_account)
+
+    proxy_facebook_account.post("Hello, Facebook!")
+    proxy_instagram_account.post("Hello, Instagram!")
+    proxy_twitter_account.post("Hello, Twitter!")
+    proxy_twitter_account.post("")
+    # 2
+    print(2)
+
     # 3
+    print(3)
     tv = TV()
     remote_control = RemoteControl()
 
