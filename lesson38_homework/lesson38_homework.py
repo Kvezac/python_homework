@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+import datetime
+
 
 
 # 1
@@ -53,7 +55,68 @@ class ProxySocialMediaAccount(SocialMediaAccount):
 
 
 # 2
+class File:
+    def __init__(self, filename):
+        self.filename = filename
 
+    def read(self):
+        try:
+            with open(self.filename, 'r', encoding="utf-8") as f:
+                return f.read()
+        except FileNotFoundError:
+            raise "File with this name does not exist"
+
+    def write(self, content):
+        with open(self.filename, 'w') as f:
+            f.write(content)
+
+    def append(self, content):
+        with open(self.filename, 'a', encoding="utf-8") as f:
+            f.write(content)
+
+    def delete(self):
+        import os
+        os.remove(self.filename)
+
+
+class FileProxy:
+    def __init__(self, filename):
+        self.file = File(filename)
+        self.cache = None
+        self.log = []
+
+    def read(self):
+        self.log.append('Read attempt')
+        if self.cache is not None:
+            return self.cache
+        else:
+            content = self.file.read()
+            self.cache = content
+            return content
+
+    def write(self, content):
+        self.log.append(f'{datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")}--> Write attempt')
+        self.file.write(content)
+        self.cache = None
+
+    def append(self, content):
+        self.log.append(f'{datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")}--> Append attempt')
+        self.file.append(content)
+        self.cache = None
+
+    def delete(self):
+        self.log.append(f'{datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")}--> Delete attempt')
+        self.file.delete()
+        self.cache = None
+
+    def restrict_access(self):
+        self.log.append(f'{datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")}--> Access restricted')
+
+    def enable_caching(self):
+        self.log.append(f'{datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")}-> Caching enabled')
+
+    def disable_caching(self):
+        self.log.append(f'{datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")}-> Caching disabled')
 
 # 3
 
@@ -210,7 +273,13 @@ if __name__ == '__main__':
     proxy_twitter_account.post("")
     # 2
     print(2)
-
+    n = FileProxy("test_2.txt")
+    n.write("New")
+    [print(log) for log in n.log]
+    n.append("Bye")
+    [print(log) for log in n.log]
+    n.write("My line write!")
+    [print(log) for log in n.log]
     # 3
     print(3)
     tv = TV()
