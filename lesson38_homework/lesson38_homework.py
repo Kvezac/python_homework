@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 import datetime
 
 
-
 # 1
 
 class SocialMediaAccount(ABC):
@@ -118,12 +117,70 @@ class FileProxy:
     def disable_caching(self):
         self.log.append(f'{datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")}-> Caching disabled')
 
-# 3
+
+# 3 =================================
+class Command(ABC):
+    @abstractmethod
+    def execute(self):
+        pass
+
+
+class PowerOnCommand(Command):
+    def __init__(self, device):
+        self.device = device
+
+    def execute(self):
+        self.device.power_on()
+
+
+class PowerOffCommand(Command):
+    def __init__(self, device):
+        self.device = device
+
+    def execute(self):
+        self.device.power_off()
+
+
+class VolumeUpCommand(Command):
+    def __init__(self, device):
+        self.device = device
+
+    def execute(self):
+        self.device.volume_up()
+
+
+class VolumeDownCommand(Command):
+    def __init__(self, device):
+        self.device = device
+
+    def execute(self):
+        self.device.volume_down()
+
+
+class Device:
+    def __init__(self, name):
+        self.name = name
+        self.volume = 0
+
+    def power_on(self):
+        print(f"{self.name} is on")
+
+    def power_off(self):
+        print(f"{self.name} is off")
+
+    def volume_up(self):
+        self.volume += 1
+        print(f"Volume {self.name} up {self.volume}")
+
+    def volume_down(self):
+        if self.volume != 0:
+            self.volume -= 1
+        print(f"Volume {self.name} down {self.volume}")
 
 
 class RemoteControl:
     def __init__(self):
-        self.commands = [None] * 10
+        self.commands = {}
         self.history = []
         self.redo_history = []
 
@@ -131,14 +188,15 @@ class RemoteControl:
         self.commands[button] = command
 
     def press_button(self, button):
-        if self.commands[button]:
-            self.commands[button].execute()
-            self.history.append(self.commands[button])
+        if button in self.commands:
+            command = self.commands[button]
+            command.execute()
+            self.history.append(command)
 
     def undo(self):
         if self.history:
             command = self.history.pop()
-            command.undo()
+            command.execute()
             self.redo_history.append(command)
 
     def redo(self):
@@ -146,113 +204,6 @@ class RemoteControl:
             command = self.redo_history.pop()
             command.execute()
             self.history.append(command)
-
-
-class Command(ABC):
-    def __init__(self, device):
-        self.device = device
-
-    def execute(self):
-        raise NotImplementedError()
-
-    def undo(self):
-        raise NotImplementedError()
-
-
-class PowerOnCommand(Command):
-    def __init__(self, device):
-        super().__init__(device)
-
-    def execute(self):
-        self.device.power_on()
-
-    def undo(self):
-        self.device.power_off()
-
-
-class PowerOffCommand(Command):
-    def __init__(self, device):
-        super().__init__(device)
-
-    def execute(self):
-        self.device.power_off()
-
-    def undo(self):
-        self.device.power_on()
-
-
-class VolumeUpCommand(Command):
-    def __init__(self, device):
-        super().__init__(device)
-
-    def execute(self):
-        self.device.volume_up()
-
-    def undo(self):
-        self.device.volume_down()
-
-
-class VolumeDownCommand(Command):
-    def __init__(self, device):
-        super().__init__(device)
-
-    def execute(self):
-        self.device.volume_down()
-
-    def undo(self):
-        self.device.volume_up()
-
-
-class Device:
-    def power_on(self):
-        print("Device is on")
-
-    def power_off(self):
-        print("Device is off")
-
-    def volume_up(self):
-        print("Volume up")
-
-    def volume_down(self):
-        print("Volume down")
-
-
-class TV(Device):
-    def __init__(self):
-        self.volume = 0
-
-    def power_on(self):
-        print("TV is on")
-
-    def power_off(self):
-        print("TV is off")
-
-    def volume_up(self):
-        self.volume += 1
-        print(f"TV volume is {self.volume}")
-
-    def volume_down(self):
-        self.volume -= 1
-        print(f"TV volume is {self.volume}")
-
-
-class DVD(Device):
-    def __init__(self):
-        self.volume = 0
-
-    def power_on(self):
-        print("DVD is on")
-
-    def power_off(self):
-        print("DVD is off")
-
-    def volume_up(self):
-        self.volume += 1
-        print(f"DVD volume is {self.volume}")
-
-    def volume_down(self):
-        self.volume -= 1
-        print(f"DVD volume is {self.volume}")
 
 
 if __name__ == '__main__':
@@ -272,17 +223,11 @@ if __name__ == '__main__':
     proxy_twitter_account.post("Hello, Twitter!")
     proxy_twitter_account.post("")
     # 2
-    print(2)
-    n = FileProxy("test_2.txt")
-    n.write("New")
-    [print(log) for log in n.log]
-    n.append("Bye")
-    [print(log) for log in n.log]
-    n.write("My line write!")
-    [print(log) for log in n.log]
+    # print(2)
+
     # 3
     print(3)
-    tv = TV()
+    tv = Device('TV')
     remote_control = RemoteControl()
 
     power_on_tv = PowerOnCommand(tv)
@@ -302,7 +247,7 @@ if __name__ == '__main__':
     remote_control.undo()  # TV volume is 2
     remote_control.redo()  # TV volume is 1
 
-    dvd = DVD()
+    dvd = Device('DVD')
     remote_control_dvd = RemoteControl()
 
     power_on_dvd = PowerOnCommand(dvd)
