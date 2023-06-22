@@ -30,12 +30,10 @@ DELETE FROM Ware
 
 
 4. Замените страну-производителя Польшу на Россию (код, товар, страна, описание товара).
-# Не разобрался для чего нужен (код, товар, описание товара)
 
 UPDATE Ware
-SET Country = 'Россия'
--- WHERE 'Польша' IN (ID, Produce, Country, REM)
-WHERE Country IN ('Польша')
+   SET Country = 'Россия'
+ WHERE Country IN ('Польша');
 
 5. Воccтановите строки, удаленные в 3 пункте.
 
@@ -158,21 +156,22 @@ INSERT INTO Ware (
 
 
 8. Вставить строку POC-463BK Compact Camera Case, полиэстер, ч, 11x7x4,5, остальные данные не определены.
-   # Нужно самостоятельно добавлять те значения которые не имеют DEFAULT и они Not Null?  
 
 INSERT INTO Ware (
                      Produce,
                      REM,
                      Material,
                      Color,
-                     Size
+                     Size,
+                     ID
                  )
                  VALUES (
                      'POC-463BK',
                      'Compact Camera Case',
                      'полиэстер',
                      'ч',
-                     '11x7x4,5'
+                     '11x7x4,5',
+                     1216
                  );
 
 
