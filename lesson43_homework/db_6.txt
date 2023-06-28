@@ -212,3 +212,7 @@ SELECT AVG( (cg.CostUnit - sg.CostUnit) * cg.Count) AvgPrrofit
 
 24. Со сколькими посредниками сотрудничает фирма.  9
 
+SELECT COUNT(DISTINCT cg.INNCLient) + COUNT(DISTINCT sg.INNSEller) trade
+  FROM ClientGoods cg,
+       SallerGoods sg
+ WHERE cg.ID = sg.ID
