@@ -1,0 +1,126 @@
+Если задание можно решить с использованием подзапроса, решите его с использованием подзапроса, даже если выглядит, что использовать его излишне:)
+
+Таблица Salespeople: 
+
+snum - номер продавца (первичный ключ) 
+sname - имя продавца 
+com - комиссионные продавца 
+city - город проживания продавца 
+======================================
+Таблица Orders: 
+
+onum - номер заказа (первичный ключ) 
+snum - номер продавца 
+cnum - номер заказчика 
+amt - сумма заказа 
+odate - дата заказа 
+=======================================
+Таблица Customers: 
+
+cnum - номер заказчика (первичный ключ) 
+cname – имя заказчика (клиента)
+city - город проживания заказчика 
+snum - номер продавца 
+rating - рейтинг 
+======================================
+
+1.	Выведите перечень сумм заказов продавца Rifkin.
+
+SELECT o.amt Total
+  FROM Orders o
+ WHERE o.snum = (
+                    SELECT snum
+                      FROM Salespeople
+                     WHERE sname = 'Rifkin'
+                )
+       );
+
+2.	Определите  комиссионные всех продавцов, обслуживающих заказчиков в Риме
+
+SELECT sname Name,
+       com * (
+                 SELECT amt
+                   FROM Orders
+                  WHERE snum IN (
+                            SELECT snum
+                              FROM Customers
+                             WHERE city = 'Rome'
+                        )
+             )
+       CashBack
+  FROM Salespeople
+ WHERE snum IN (
+           SELECT snum
+             FROM Customers
+            WHERE city = 'Rome'
+       );
+ 
+3.	Напишите запрос, который определит заказчиков имеющих рейтинг ниже среднего.
+
+SELECT cname Name,
+       rating
+  FROM Customers
+ WHERE rating < (
+                    SELECT AVG(rating) 
+                      FROM Customers
+                );
+
+4.	Определите города проживания заказчиков с наименьшим рейтингом.
+
+SELECT city, cname Name,
+       rating
+  FROM Customers
+ WHERE rating IN (
+           SELECT MIN(rating) 
+             FROM Customers
+       ) ;
+
+5.	Напишите запрос, который выводил бы заказы клиента Liu
+
+SELECT onum OrderNumber
+  FROM Orders
+ WHERE snum IN (
+           SELECT snum
+             FROM Customers
+            WHERE cname = 'Liu'
+       )
+
+6.	Определите наибольшие комиссионные продавца для Рима.
+
+SELECT sname Name,
+       MAX(com * (
+                 SELECT amt
+                   FROM Orders
+                  WHERE snum IN (
+                            SELECT snum
+                              FROM Customers
+                             WHERE city = 'Rome'
+                        )
+             ))
+       CashBack
+  FROM Salespeople
+ WHERE snum IN (
+           SELECT snum
+             FROM Customers
+            WHERE city = 'Rome'
+       );
+
+7.	Напишите запрос который выведет всех клиентов обслуживаемых продавцом Motiка.
+
+SELECT *
+  FROM Customers
+ WHERE snum = (
+           SELECT snum
+             FROM Salespeople
+             WHERE sname = 'Motika' 
+       );
+
+8.	Напишите запрос, который выведет максимальный рейтинг заказчика для продавцов имеющих комиссионные больше 0,11%.
+
+SELECT MAX(rating) MaxRating
+  FROM Customers
+ WHERE snum IN (
+           SELECT snum
+             FROM Salespeople
+            WHERE com > 0.11
+       );
