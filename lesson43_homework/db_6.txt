@@ -143,10 +143,13 @@ SELECT MAX(cg.CostUnit * cg.Count) revenue
 
 16. Определить сколько всего фирм проводило сделки. 34 
 
-SELECT COUNT(DISTINCT cg.INNCLient) + COUNT(DISTINCT sg.INNSEller) trade
+SELECT COUNT(DISTINCT cg.INNClient) + COUNT(DISTINCT sg.INNSeller) trade
   FROM ClientGoods cg,
-       SallerGoods sg
- WHERE cg.ID = sg.ID 
+       Client c,
+       SallerGoods sg,
+       Seller s
+ WHERE cg.INNClient = c.INNClient OR 
+       sg.INNSeller = s.INNSeller
 
 17. Определить минимальную сумму сделки по закупке товара у производителей. 99 
 
@@ -204,7 +207,7 @@ SELECT c.Client,
 
 -- запрос не коректен доработать
 
-SELECT AVG( (cg.CostUnit - sg.CostUnit) * cg.Count) AvgPrrofit
+SELECT AVG( (cg.CostUnit - sg.CostUnit) * cg.Count) AvgProfit
   FROM SallerGoods sg,
        ClientGoods cg
  WHERE sg.ID = cg.ID AND 
@@ -212,7 +215,16 @@ SELECT AVG( (cg.CostUnit - sg.CostUnit) * cg.Count) AvgPrrofit
 
 24. Со сколькими посредниками сотрудничает фирма.  9
 
-SELECT COUNT(DISTINCT cg.INNCLient) + COUNT(DISTINCT sg.INNSEller) trade
-  FROM ClientGoods cg,
-       SallerGoods sg
- WHERE cg.ID = sg.ID
+-- вот такое насмотрел
+
+SELECT (
+           SELECT COUNT(DISTINCT Client) 
+             FROM Client
+            WHERE Status = 'посредник'
+       )
++      (
+           SELECT COUNT(DISTINCT Seller) 
+             FROM Seller
+            WHERE Status = 'посредник'
+       )
+       AS Summary
