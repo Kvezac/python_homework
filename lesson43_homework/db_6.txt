@@ -204,13 +204,22 @@ SELECT c.Client,
 
 23. Определите среднюю прибыль от перепродажи масла. 30.06914893617022 
 
--- запрос не коректен доработать
+-- запрос не коректен результат 48.59999999999999
 
 SELECT AVG( (cg.CostUnit - sg.CostUnit) * cg.Count) AvgProfit
   FROM SallerGoods sg,
        ClientGoods cg
  WHERE sg.ID = cg.ID AND 
        sg.Goods LIKE 'масло%' 
+
+==================================================================
+
+-- такой запрос выводит верный результат, но без фильтра по маслу.
+
+SELECT AVG( (cg.CostUnit - sg.CostUnit) * cg.Count) AvgProfit
+  FROM SallerGoods sg,
+       ClientGoods cg
+ WHERE sg.ID = cg.ID
 
 24. Со сколькими посредниками сотрудничает фирма.  9
 
