@@ -177,9 +177,8 @@ SELECT ROUND(MAX( (cg.CostUnit - sg.CostUnit) * cg.Count) ) MaxProfit
 
 20. Определите минимальную прибыль за товар, купленный у посредника. 24.3 "5"
 
--- запрос не коректен доработать
 
- SELECT MIN( (sg.CostUnit - cg.CostUnit) * cg.Count) MinProfit
+SELECT ROUND(MIN( (cg.CostUnit - sg.CostUnit) * cg.Count)) MinProfit
   FROM ClientGoods cg,
        SallerGoods sg,
        Seller s
@@ -215,7 +214,7 @@ SELECT AVG( (cg.CostUnit - sg.CostUnit) * cg.Count) AvgProfit
 
 24. Со сколькими посредниками сотрудничает фирма.  9
 
--- вот такое насмотрел
+-- вот такое насмотрел 
 
 SELECT (
            SELECT COUNT(DISTINCT Client) 
