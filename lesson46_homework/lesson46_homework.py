@@ -1,8 +1,8 @@
 import sqlite3 as sq
 import csv
 
-with sq.connect('database.db') as conn:
-    cur = conn.cursor()
+with sq.connect('database.db') as con:
+    cur = con.cursor()
 
     cur.execute('''CREATE TABLE IF NOT EXISTS users (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -20,15 +20,39 @@ with sq.connect('database.db') as conn:
     with open('users.csv', 'r', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile)
         next(reader)  # пропустить заголовок
-        for row in reader:
-            name, age = str(*row).split(',')
-            cur.execute("INSERT INTO users VALUES (Null, ?, ?)", (name, age))
+        try:
+            for row in reader:
+                name, age = str(*row).split(',')
+                cur.execute("INSERT INTO users VALUES (Null, ?, ?)", (name, age))
+        except sq.Error as e:
+            print(f'TABLE "users": {e}')
+            if con:
+                con.rollback()
+        else:
+            con.commit()
 
     product_list = [(1, 'Телефон', 500),
                     (3, 'Ноутбук', 1000),
                     (3, 'Наушники', 200)]
+    try:
+        cur.executemany('''INSERT INTO orders VALUES(Null, ?, ?, ?)''', product_list)
+    except sq.Error as e:
+        print(f'TABLE "orders": {e}')
+        if con:
+            con.rollback()
+    else:
+        con.commit()
 
-    cur.executemany('''INSERT INTO orders VALUES(Null, ?, ?, ?)''', product_list)
+    try:
+        name  = input("Введите имя\n: ")
+        age  = input("Введите возраст\n: ")
+        cur.execute("INSERT INTO users VALUES (Null, ?, ?)", (name, age))
+    except sq.Error as e:
+        print(f'IS NOT UPDATE TABLE "users": e')
+        if con:
+            con.rollback()
+    else:
+        con.commit()
 
     # Получить список всех пользователей и их возраст:
     cur.execute("SELECT name, age FROM users")
