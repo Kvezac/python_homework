@@ -12,7 +12,6 @@ class Sales(Base):
     date = Column(DATE, default=datetime.date.year)
     salesman_id = Column(Integer, ForeignKey('salesmen.id'))
     customer_id = Column(Integer, ForeignKey('customers.id'))
-    # product = Column(String)
     amount = Column(Integer)
 
 
