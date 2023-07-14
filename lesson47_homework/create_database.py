@@ -1,5 +1,5 @@
 from faker import Faker
-from models.database import create_db, Session
+from lesson47_homework.models.database import create_db, Session
 from lesson47_homework.models.models import Sales, Salesmen, Customers
 
 fake = Faker('ru-RU')
@@ -12,14 +12,15 @@ def create_database(load_fake_data=True):
 
 
 def _load_fake_data(session):
-    for _ in range(20):
-        name = fake.name()
+    # Заполнение таблицы Salesmen
+    for _ in range(5):
+        name = fake.company()
         salesman = Salesmen(name=name)
         session.add(salesman)
 
     # Заполнение таблицы Customers
-    for _ in range(5):
-        name = fake.company()
+    for _ in range(20):
+        name = fake.name()
         customer = Customers(name=name)
         session.add(customer)
 
