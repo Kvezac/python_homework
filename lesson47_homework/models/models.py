@@ -1,9 +1,8 @@
 import datetime
 
 from sqlalchemy import Column, Integer, String, ForeignKey, DATE
-from sqlalchemy.orm import declarative_base
 
-Base = declarative_base()
+from lesson47_homework.models.database import Base, DATABASE_NAME
 
 
 class Sales(Base):
