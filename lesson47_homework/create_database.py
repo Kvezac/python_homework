@@ -1,6 +1,6 @@
 from faker import Faker
-from lesson47_homework.models.database import create_db, Session
-from lesson47_homework.models.models import Sales, Salesmen, Customers
+from models.database import create_db, Session
+from models.models import Sales, Salesmen, Customers
 
 fake = Faker('ru-RU')
 

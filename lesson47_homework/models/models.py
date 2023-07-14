@@ -2,7 +2,7 @@ import datetime
 
 from sqlalchemy import Column, Integer, String, ForeignKey, DATE
 
-from lesson47_homework.models.database import Base, DATABASE_NAME
+from .database import Base
 
 
 class Sales(Base):
