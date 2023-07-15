@@ -12,20 +12,24 @@ def create_database(load_fake_data=True):
 
 
 def _load_fake_data(session):
-    # Заполнение таблицы Salesmen
+    """Filling in the tables:
+     Salesmen,
+     Customers,
+     Sales"""
     for _ in range(5):
+        '''Filling in the table Salesmen'''
         name = fake.company()
         salesman = Salesmen(name=name)
         session.add(salesman)
 
-    # Заполнение таблицы Customers
     for _ in range(20):
+        '''Filling in the table Customers'''
         name = fake.name()
         customer = Customers(name=name)
         session.add(customer)
 
-    # Заполнение таблицы Sales
     for _ in range(50):
+        '''Filling in the table Sales'''
         salesman_id = fake.random_int(min=1, max=5)
         customer_id = fake.random_int(min=1, max=20)
         date = fake.date_between(start_date='-3y', end_date='today')
@@ -36,5 +40,3 @@ def _load_fake_data(session):
     session.commit()
     print("Database created")
     session.close()
-
-
