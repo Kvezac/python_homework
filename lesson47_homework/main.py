@@ -12,7 +12,13 @@ from crud import all_items, \
     min_sale_by_all_salesmen, \
     max_sale_by_all_customers, \
     avg_sale_by_customers, \
-    avg_sale_by_salesman, key_request, update_sale, update_customers, update_salesman, insert_table, delete_entry
+    avg_sale_by_salesman, \
+    key_request, \
+    update_sale, \
+    update_customers, \
+    update_salesman, \
+    insert_table,\
+    delete_entry
 from models.database import DATABASE_NAME
 import create_database as db_creator
 
