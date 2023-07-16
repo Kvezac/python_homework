@@ -28,7 +28,8 @@ from lesson47_homework.models.models import Sales, Salesmen, Customers
 def main():
     while (query := input('Choose a command to execute\n'
                           '1. Sample Requests\n'
-                          '2. Creat, Insert, Delete\n: ')) != '0':
+                          '2. Creat, Insert, Delete\n'
+                          '"0" Exit\n: ')) != '0':
         match query:
             case '1':
                 while (request := input('Choose a command to execute\n'
@@ -47,7 +48,8 @@ def main():
                                         '11. Displaying the buyer who has the maximum amount of purchases across all '
                                         'transactions\n'
                                         '12. Displaying the average purchase amount for a particular customer\n'
-                                        '13. Displaying the average purchase amount for a particular seller\n: ')) != '0':
+                                        '13. Displaying the average purchase amount for a particular seller\n'
+                                        '"0" Exit\n: ')) != '0':
                     match request:
                         case '1':
                             db_query = all_items(Sales)
@@ -116,7 +118,8 @@ def main():
                                         '6. Add a new entry to the table Salesmen\n'
                                         '7. Delete record from table Sales\n'
                                         '8. Delete record from table Customers\n'
-                                        '9. Delete record from table Salesmen\n: ')) != '0':
+                                        '9. Delete record from table Salesmen\n'
+                                        '"0" Exit\n: ')) != '0':
                     match request:
                         case '1':
                             sale_query = all_items(Sales)
@@ -196,7 +199,8 @@ def main():
                                 print("Sale with this ID was not found")
                         case _:
                             print('There is no command like this.')
-
+                else:
+                    print('Exit to main menu')
             case _:
                 print('There is no command like this.')
     else:
