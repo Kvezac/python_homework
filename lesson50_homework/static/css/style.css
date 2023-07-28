@@ -1,0 +1,125 @@
+
+body {
+  font-family: Arial, "Tahoma", sans-serif;
+  color: black;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 1440px;
+  margin: 0 auto;
+}
+
+.ml-5 {
+  margin-left: -5px;
+}
+
+/* antic */
+
+/* base */
+
+.antic-nav__item,
+p {
+  font-family: Varta, sans-serif;
+  color: #706458;
+}
+
+.antic-nav__logo,
+h1,
+h2 {
+  font-family: "Merriweather Sans", sans-serif;
+  color: #a06056;
+}
+
+/* Помещаем меню наверху страницы */
+html{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+/* Размещаем контент по центру */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Общие стили */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+}
+
+nav {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+nav li {
+	display: inline-block;
+	margin: 0 10px;
+}
+
+nav a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Стили для каждой страницы */
+#index {
+	background-color: #f2f2f2;
+}
+
+#about {
+	background-color: #e6f2ff;
+}
+
+#contacts {
+	background-color: #f2e6ff;
+}
+
+/* Стили для заголовков и текста */
+h1 {
+	font-size: 36px;
+	margin: 0 0 20px;
+}
+
+p {
+	font-size: 18px;
+	line-height: 1.5;
+	margin: 0 0 20px;
+}
