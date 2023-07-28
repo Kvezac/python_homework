@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>
+        {% block title %}
+        {% if title %}
+            Озера Карелии - {{ title }}
+        {% else %}
+            Озера Карелии
+        {% endif %}
+        {% endblock %}</title>
+</head>
+<body>
+
+{% block content %}
+<ul class="menu">
+    {% for i in menu %}
+    <li>
+        <a href="{{ i.url }}">{{ i.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+<div class="container">
+    {% if title %}
+    <h1>{{ title }}</h1>
+    {% else %}
+    <h1>Про Flask</h1>
+    {% endif %}
+
+
+{% for cat, msg in get_flashed_messages(True) %}
+    <div class="flash {{ cat }}">{{ msg }}</div>
+{% endfor %}
+</div>
+{% endblock %}
+
+</body>
+</html>
