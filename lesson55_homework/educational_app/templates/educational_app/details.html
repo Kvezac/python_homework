@@ -1,0 +1,15 @@
+{% extends 'educational_app/index.html' %}
+
+{% block title %}
+    <h1>{{ work.title }}</h1>
+{% endblock %}
+{% block content %}
+
+    <div class="details">
+        <img src="{{ work.image.url }}" alt="{{ work.title }}">
+        <h1>{{ work.title }}</h1>
+        <p>{{ work.description }}</p>
+        <a href="{{ work.project_file.url }}" download>Скачать</a>
+
+    </div>
+{% endblock %}
