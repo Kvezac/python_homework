@@ -1,11 +1,12 @@
 {% extends 'educational_app/index.html' %}
-
+{% load static %}
 {% block title %}
-    <h1>{{ work.title }}</h1>
+    {{ work.title }}
 {% endblock %}
 {% block style %}
     {% if work.css_file %}
         <link rel="stylesheet" type="text/css" href="{{ work.css_file.url }}">
+
     {% endif %}
 {% endblock %}
 {% block content %}

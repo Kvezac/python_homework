@@ -3,6 +3,9 @@
 {% block title %}
     Учебные проекты
 {% endblock %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock %}
 {% block content %}
     <h1>Учебные проекты</h1>
     <h2 class="count">Проектов: {{ works.count }}</h2>
