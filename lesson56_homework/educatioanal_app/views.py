@@ -27,14 +27,12 @@ def signup(request):
                     password=request.POST['password1']
                 )
                 user.save()
-                # login(request, user)
-                # return redirect('current')
             except IntegrityError:
                 return render(request, 'educational_app/signup.html', {'form': UserCreationForm(),
                                                                        'error': 'Пользователь с таким именем существует!'})
             else:
                 login(request, user)
-                return redirect('current')
+                return redirect('index')
         else:
             return render(request, 'educational_app/signup.html',
                           {'form': UserCreationForm(),
@@ -53,10 +51,10 @@ def signin(request):
                            'error': 'Неверные данные для входа!'})
         else:
             login(request, user)
-            return redirect('current')
+            return redirect('index')
 
 
 def logoutuser(request):
     if request.method == 'POST':
         logout(request)
-        return redirect('home')
+        return redirect('index')

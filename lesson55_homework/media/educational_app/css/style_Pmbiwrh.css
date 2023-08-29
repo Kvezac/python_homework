@@ -1,0 +1,30 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.details img {
+  max-width: 100%;
+}
+
+.details h1 {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.details p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-top: 1rem;
+}
+
+.details a {
+  display: inline-block;
+  background-color: #007bff;
+  color: darkgrey;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  margin-top: 1rem;
+}
