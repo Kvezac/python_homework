@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}| {{ site_title | default:_('MY SITE') }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+</head>
+<body>
+<div class="menu">
+    <ul>
+        <li><a href="{% url 'index' %}">Главная</a></li>
+        <li><a href="{% url 'signin' %}">Войти</a></li>
+        <li><a href="{% url 'signup' %}">Зарегистрироваться</a></li>
+    </ul>
+</div>
+<h2>{{ error }}</h2>
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
