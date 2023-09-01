@@ -14,8 +14,8 @@
             <ul>
                 <li class="logo"><a href="">Пользователь: {{ user.username }}</a></li>
                 <li><a href="{% url 'create_product' %}">Добавить продукт</a></li>
-                <li><a href="{% url 'update_product' %}">Изменить продукт</a></li>
-                <form action="{% url 'logout' %}" method="post">
+{#                <li><a href="{% url 'update_product' %}">Изменить продукт</a></li>#}
+{#                <form action="{% url 'logout' %}" method="post">#}
                     {% csrf_token %}
                     <button class="btn bottom">Выйти</button>
                 </form>

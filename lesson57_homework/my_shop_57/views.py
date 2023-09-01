@@ -51,7 +51,7 @@ def login_user(request):
             return redirect('home')
 
 
-def logoutuser(request):
+def logout_user(request):
     if request.method == 'POST':
         logout(request)
         return redirect('home')
@@ -66,7 +66,7 @@ def create_product(request):
             new_todo = form.save(commit=False)
             new_todo.user = request.user
             new_todo.save()
-            return redirect('current')
+            return redirect('home')
         except ValueError:
             return render(request, 'my_shop_57/create_product.html',
                           {'form': ProductForm(),
