@@ -48,7 +48,7 @@ def login_user(request):
                            'error': 'Неверные данные для входа!'})
         else:
             login(request, user)
-            return redirect('current')
+            return redirect('home')
 
 
 def logoutuser(request):
